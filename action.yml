@@ -1,0 +1,19 @@
+name: "@appwarden/action"
+branding:
+  icon: "life-buoy"
+  color: "blue"
+description: "Shut off external access to your domain from Github Actions"
+author: "Appwarden <https://github.com/appwarden>"
+inputs:
+  domain-name:
+    required: true
+    description: "Domain to place into a mode (e.g. appwarden.io)"
+  domain-mode:
+    required: true
+    description: "Mode to place domain in ['lock', 'unlock', 'test-lock', 'test-unlock']"
+  appwarden-token:
+    required: true
+    description: "Your Appwarden API token"
+runs:
+  using: "node20"
+  main: "dist/index.mjs"
