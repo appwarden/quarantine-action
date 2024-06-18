@@ -1,24 +1,22 @@
 {
-	"name": "wrangler-action",
-	"version": "3.6.1",
-	"description": "GitHub Action to use [Wrangler](https://developers.cloudflare.com/workers/cli-wrangler/).",
-	"author": "wrangler@cloudflare.com",
-	"license": "MIT OR Apache-2.0",
+	"name": "@appwarden/action",
+	"version": "1.0.0",
+	"description": "Easy-to-use GitHub Action to control your Appwarden-protected domain",
+	"author": "support@appwarden.io",
+	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/cloudflare/wrangler-action/issues"
+		"url": "https://github.com/appwarden/action/issues"
 	},
-	"homepage": "https://github.com/cloudflare/wrangler-action#readme",
+	"homepage": "https://github.com/appwarden/action#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/cloudflare/wrangler-action.git"
+		"url": "git+https://github.com/appwarden/action.git"
 	},
 	"keywords": [
-		"script",
-		"cli",
-		"serverless",
-		"cloudflare",
-		"cloudflare-workers",
-		"typescript"
+		"appwarden",
+		"github actions",
+		"web3",
+		"web security"
 	],
 	"type": "module",
 	"main": "dist/index.mjs",
@@ -35,7 +33,6 @@
 	"devDependencies": {
 		"@changesets/changelog-github": "^0.4.8",
 		"@changesets/cli": "^2.26.2",
-		"@cloudflare/workers-types": "^4.20231121.0",
 		"@types/node": "^20.10.4",
 		"@vercel/ncc": "^0.38.1",
 		"prettier": "^3.1.0",
