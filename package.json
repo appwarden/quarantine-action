@@ -1,6 +1,6 @@
 {
   "name": "@appwarden/action",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easy-to-use GitHub Action to control your Appwarden-protected domain",
   "author": "support@appwarden.io",
   "license": "MIT",
