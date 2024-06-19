@@ -1,11 +1,19 @@
 import { error, getInput, info, setFailed } from "@actions/core"
-import { ignoreProtocol } from "./utils"
+import { APIResponse } from "./types"
+import { ensureProtocol, ignoreProtocol } from "./utils"
 
 const config = {
+  debug: getInput("debug"),
   mode: getInput("domain-mode"),
   domainName: getInput("domain-name"),
   appwardenApiToken: getInput("appwarden-token"),
 } as const
+
+const debug = (msg: string) => {
+  if (config.debug) {
+    console.log(msg)
+  }
+}
 
 async function main() {
   try {
@@ -25,8 +33,14 @@ async function main() {
     if (!config.domainName) {
       throw new Error("Provide a domainName parameter")
     }
+    const { href } = new URL(
+      "/v1/domain-mode",
+      "https://bot-gateway.appwarden.io",
+    )
 
-    await fetch(new URL("/v1/domain-mode", "https://api.appwarden.io").href, {
+    debug(href)
+
+    const response = await fetch(href, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -36,8 +50,22 @@ async function main() {
       }),
     })
 
+    if (response.status !== 200) {
+      throw new Error("Bad response from Appwarden API")
+    }
+
+    const result = (await response.json()) as APIResponse
+
+    debug(JSON.stringify(result, null, 2))
+
+    if (result.error) {
+      throw new Error(result.error.message)
+    }
+
     info(
-      `🏁 Appwarden placed ${config.domainName} into ${config.mode} mode. Changes may take up to 30 seconds to take effect.`,
+      `🏁 Appwarden placed ${ensureProtocol(config.domainName)} into ${
+        config.mode
+      } mode. Changes may take up to 30 seconds to take effect.`,
     )
   } catch (err: unknown) {
     err instanceof Error && error(err.message)
