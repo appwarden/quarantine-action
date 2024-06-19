@@ -3,10 +3,10 @@ import { APIResponse } from "./types"
 import { ensureProtocol, ignoreProtocol } from "./utils"
 
 const config = {
-  debug: getInput("debug"),
   mode: getInput("domain-mode"),
   domainName: getInput("domain-name"),
   appwardenApiToken: getInput("appwarden-token"),
+  debug: getInput("debug") === "true",
 } as const
 
 const debug = (msg: string) => {
@@ -63,7 +63,12 @@ async function main() {
     }
 
     info(
-      `🏁 Appwarden placed ${ensureProtocol(config.domainName)} into ${
+      `🏁 Appwarden placed ${
+        new URL(
+          config.mode.includes("test") ? "_appwarden/test" : "",
+          ensureProtocol(config.domainName),
+        ).href
+      } into ${
         config.mode
       } mode. Changes may take up to 30 seconds to take effect.`,
     )
