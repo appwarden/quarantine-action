@@ -1,5 +1,11 @@
 # @appwarden/action
 
+## 1.0.2
+
+### Patch Changes
+
+- [`ec96a53c99ed008f6cba1e57039a371d9fc1fb24`](https://github.com/appwarden/action/commit/ec96a53c99ed008f6cba1e57039a371d9fc1fb24) Thanks [@stevefrench39](https://github.com/stevefrench39)! - test
+
 ## 1.0.1
 
 ### Patch Changes
