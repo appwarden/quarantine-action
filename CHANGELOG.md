@@ -1,5 +1,11 @@
 # @appwarden/action
 
+## 1.1.0
+
+### Minor Changes
+
+- [`795b70d62f28d2f40bd1f434df7ad55908129788`](https://github.com/appwarden/action/commit/795b70d62f28d2f40bd1f434df7ad55908129788) Thanks [@stevefrench39](https://github.com/stevefrench39)! - cleaned up debug logs and output messages
+
 ## 1.0.4
 
 ### Patch Changes
