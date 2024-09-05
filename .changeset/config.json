@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
-  "changelog": ["@changesets/changelog-github", { "repo": "appwarden/action" }],
+  "changelog": ["@changesets/changelog-github", { "repo": "appwarden/quarantine-action" }],
   "commit": false,
   "linked": [],
   "access": "public",

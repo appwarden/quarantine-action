@@ -1,4 +1,4 @@
-name: "@appwarden/action"
+name: "@appwarden/quarantine-action"
 branding:
   icon: "life-buoy"
   color: "blue"
