@@ -1,5 +1,11 @@
 # @appwarden/quarantine-action
 
+## 1.1.1
+
+### Patch Changes
+
+- [`e36070889899fe979d9ee5ecc1d4768c6d69f3d9`](https://github.com/appwarden/quarantine-action/commit/e36070889899fe979d9ee5ecc1d4768c6d69f3d9) Thanks [@stevefrench39](https://github.com/stevefrench39)! - rename action
+
 ## 1.1.0
 
 ### Minor Changes

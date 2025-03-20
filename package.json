@@ -1,6 +1,6 @@
 {
   "name": "@appwarden/quarantine-action",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Easy-to-use GitHub Action to control your Appwarden-protected domain",
   "author": "support@appwarden.io",
   "license": "MIT",
