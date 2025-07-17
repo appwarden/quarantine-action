@@ -71,15 +71,6 @@ cd quarantine-action
 
 # Install dependencies
 npm install
-
-# Run tests
-npm test
-
-# Run tests with coverage
-npm run test:coverage
-
-# Build the action
-npm run build
 ```
 
 ### Testing
