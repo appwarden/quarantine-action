@@ -2,6 +2,7 @@ dist
 .vscode
 .npm
 node_modules
+coverage
 
 ### macOS ###
 # General

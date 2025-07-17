@@ -2,20 +2,27 @@ import { error, getInput, info, setFailed } from "@actions/core"
 import { APIResponse } from "./types"
 import { ensureProtocol, ignoreProtocol } from "./utils"
 
-const config = {
+export interface Config {
+  mode: string
+  domainName: string
+  appwardenApiToken: string
+  debug: boolean
+}
+
+export const getConfig = (): Config => ({
   mode: getInput("domain-mode"),
   domainName: getInput("domain-name"),
   appwardenApiToken: getInput("appwarden-token"),
   debug: getInput("debug") === "true",
-} as const
+})
 
-const debug = (msg: string) => {
-  if (config.debug) {
+export const debug = (msg: string, isDebug: boolean) => {
+  if (isDebug) {
     console.log(msg)
   }
 }
 
-async function main() {
+export async function runAction(config: Config) {
   try {
     if (!config.appwardenApiToken) {
       throw new Error("Provide an Appwarden API token parameter")
@@ -38,7 +45,7 @@ async function main() {
       "https://bot-gateway.appwarden.io",
     )
 
-    debug(href)
+    debug(href, config.debug)
 
     const response = await fetch(href, {
       method: "POST",
@@ -56,7 +63,7 @@ async function main() {
 
     const result = (await response.json()) as APIResponse
 
-    debug(JSON.stringify(result, null, 2))
+    debug(JSON.stringify(result, null, 2), config.debug)
 
     if (result.error) {
       throw new Error(result.error.message)
@@ -78,4 +85,12 @@ async function main() {
   }
 }
 
-main()
+async function main() {
+  const config = getConfig()
+  await runAction(config)
+}
+
+// Only run main if this file is executed directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main()
+}
